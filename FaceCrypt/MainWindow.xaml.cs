@@ -25,8 +25,15 @@ namespace FaceCrypt
             InitializeComponent();
             if(!File.Exists("key"))
             {
-                new HandshakeWindow().ShowDialog();
+                if(new HandshakeWindow().ShowDialog() == false)
+                {
+                    Close();
+                    return;
+                }
             }
+            EncryptionWindow.encKey = File.ReadAllBytes("key");
+            new EncryptionWindow().Show();
+            Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

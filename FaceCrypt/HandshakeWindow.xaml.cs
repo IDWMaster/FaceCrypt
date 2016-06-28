@@ -59,6 +59,7 @@ namespace FaceCrypt
                                     instructions.Text += "\n\nNext, an AES session key, encrypted with your friend's public key\nhas been copied to your clipboard.\nPlease paste this key in your Facebook messenger\nand tell them to copy it into this program.";
                                     using(AesCryptoServiceProvider mep = new AesCryptoServiceProvider())
                                     {
+                                        mep.KeySize = 256;
                                         mep.GenerateKey();
                                         Clipboard.SetText(Convert.ToBase64String(msp.Encrypt(mep.Key, true)));
                                         File.WriteAllBytes("key",mep.Key);
