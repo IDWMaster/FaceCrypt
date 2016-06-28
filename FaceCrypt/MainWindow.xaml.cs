@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace FaceCrypt
 {
     /// <summary>
@@ -23,6 +23,21 @@ namespace FaceCrypt
         public MainWindow()
         {
             InitializeComponent();
+            if(!File.Exists("key"))
+            {
+                new HandshakeWindow().ShowDialog();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Encrypt window
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Decrypt window
+            
         }
     }
 }

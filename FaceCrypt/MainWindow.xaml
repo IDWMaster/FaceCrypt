@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Click="Button_Click">Encrypt message</Button>
+        <Button Grid.Column="1" Click="Button_Click_1">Decrypt message</Button>
     </Grid>
 </Window>
