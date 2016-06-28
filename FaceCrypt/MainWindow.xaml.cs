@@ -25,7 +25,9 @@ namespace FaceCrypt
             InitializeComponent();
             if(!File.Exists("key"))
             {
-                if(new HandshakeWindow().ShowDialog() == false)
+                var hwnd = new HandshakeWindow();
+                hwnd.ShowDialog();
+                if(hwnd.result == false)
                 {
                     Close();
                     return;

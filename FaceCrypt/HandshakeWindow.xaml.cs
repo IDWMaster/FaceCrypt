@@ -34,6 +34,7 @@ namespace FaceCrypt
             ApplicationCommands.Paste.CanExecuteChanged += Paste_CanExecuteChanged;
             
         }
+        public bool result = false;
         private void Paste_CanExecuteChanged(object sender, EventArgs e)
         {
 
@@ -63,7 +64,7 @@ namespace FaceCrypt
                                         mep.GenerateKey();
                                         Clipboard.SetText(Convert.ToBase64String(msp.Encrypt(mep.Key, true)));
                                         File.WriteAllBytes("key",mep.Key);
-                                        DialogResult = true;
+                                        result = true;
                                     }
                                 }else
                                 {
@@ -87,7 +88,7 @@ namespace FaceCrypt
             {
                 byte[] key = msp.Decrypt(Convert.FromBase64String(Clipboard.GetText()), true);
                 File.WriteAllBytes("key", key);
-                DialogResult = true;
+                result = true;
                 Close();
                 MessageBox.Show("Key exchange was successful. You can now exchange messages securely with your friend. Please have your friend close the key exchange window.");
             }

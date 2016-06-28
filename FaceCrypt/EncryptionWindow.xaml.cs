@@ -30,6 +30,7 @@ namespace FaceCrypt
             InitializeComponent();
             msp.Key = encKey;
             msp.IV = new byte[16];
+            msp.Padding = PaddingMode.None;
             enc = msp.CreateEncryptor();
             dec = msp.CreateDecryptor();
         }
